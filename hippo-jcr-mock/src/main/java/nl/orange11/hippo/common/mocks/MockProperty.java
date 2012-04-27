@@ -8,13 +8,13 @@ import java.util.Calendar;
 
 /**
  * Mock for the {@link Property} interface.
- *
+ * <p/>
  * Some of the methods are not implemented. An UnsupportedOperationException is thrown in that case to make the unit
  * test that depends on this method fail. For now methods with respect to Parent, ancestor and Node are not supported.
- *
+ * <p/>
  * If you need to call save or refresh, you need to provide a session. If you do not provide a session and still call
  * these methods, an {@link UnsupportedOperationException} is thrown.
- *
+ * <p/>
  * Binaries and Streams are not really used by me, so if you need them be sure to test if it works for you.
  */
 public class MockProperty implements Property {
@@ -30,15 +30,15 @@ public class MockProperty implements Property {
     private Session session;
 
     public MockProperty(String name) {
-        this(name,false,false);
+        this(name, false, false);
     }
 
     public MockProperty(String name, boolean modified, boolean aNew) {
-        this(name,null,modified, aNew);
+        this(name, null, modified, aNew);
     }
 
     public MockProperty(String name, Session session) {
-        this(name,session,false,false);
+        this(name, session, false, false);
     }
 
     public MockProperty(String name, Session session, boolean modified, boolean aNew) {
@@ -165,6 +165,9 @@ public class MockProperty implements Property {
     }
 
     public Session getSession() throws RepositoryException {
+        if (session == null) {
+            throw new UnsupportedOperationException();
+        }
         return session;
     }
 
@@ -185,7 +188,7 @@ public class MockProperty implements Property {
     }
 
     public void refresh(boolean keepChanges) throws RepositoryException {
-        session.refresh(keepChanges);
+        getSession().refresh(keepChanges);
     }
 
     public void remove() throws RepositoryException {
@@ -193,7 +196,7 @@ public class MockProperty implements Property {
     }
 
     public void save() throws RepositoryException {
-        session.save();
+        getSession().save();
     }
 
     public boolean isRemoved() {
@@ -201,7 +204,8 @@ public class MockProperty implements Property {
     }
 
     private void checkSingleValue() throws RepositoryException {
-        if (isMultiple()) throw new ValueFormatException("The value is a multiple value and a singular value is requested");
+        if (isMultiple())
+            throw new ValueFormatException("The value is a multiple value and a singular value is requested");
     }
 
     /* Unsupported methods */
