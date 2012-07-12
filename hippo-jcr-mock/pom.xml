@@ -10,7 +10,7 @@
     <version>1.0.0-SNAPSHOT</version>
 
     <properties>
-        <hippo-repository.version>2.20.08</hippo-repository.version>
+        <hippo-repository.version>2.22.06</hippo-repository.version>
         <jcr.version>2.0</jcr.version>
     </properties>
 
