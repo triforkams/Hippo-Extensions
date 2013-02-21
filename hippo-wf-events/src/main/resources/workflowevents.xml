@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sv:node xmlns:sv="http://www.jcp.org/jcr/sv/1.0" xmlns:h="http://www.onehippo.org/jcr/xmlimport"
+         sv:name="hippo:workflows" h:merge="combine">
+    <sv:node sv:name="events-searchindexupdate-depublish" h:merge="override">
+        <sv:property sv:name="jcr:primaryType" sv:type="Name">
+            <sv:value>hipposys:workflowcategory</sv:value>
+        </sv:property>
+        <sv:node sv:name="searchindexupdate-depublish">
+            <sv:property sv:name="jcr:primaryType" sv:type="Name">
+                <sv:value>hipposys:workflowboundmethodevent</sv:value>
+            </sv:property>
+            <sv:property sv:name="hipposys:classname" sv:type="String">
+                <sv:value>nl.trifork.hippo.common.workflowevents.SearchIndexUpdateUnpublishedDocumentEvent</sv:value>
+            </sv:property>
+            <sv:property sv:name="hipposys:display" sv:type="String">
+                <sv:value>Workflow event for updating the search index by removing document</sv:value>
+            </sv:property>
+            <sv:property sv:name="hipposys:eventconditioncategory" sv:type="String">
+                <sv:value>default</sv:value>
+            </sv:property>
+            <sv:property sv:name="hipposys:eventconditionmethod" sv:type="String">
+                <sv:value>depublish</sv:value>
+            </sv:property>
+            <sv:property sv:name="hipposys:nodetype" sv:type="String">
+                <sv:value>hippogogreen:document</sv:value>
+            </sv:property>
+            <sv:node sv:name="hipposys:types">
+                <sv:property sv:name="jcr:primaryType" sv:type="Name">
+                    <sv:value>hipposys:types</sv:value>
+                </sv:property>
+            </sv:node>
+        </sv:node>
+    </sv:node>
+    <sv:node sv:name="events-searchindexupdate-publish" h:merge="override">
+        <sv:property sv:name="jcr:primaryType" sv:type="Name">
+            <sv:value>hipposys:workflowcategory</sv:value>
+        </sv:property>
+        <sv:node sv:name="searchindexupdate-publish">
+            <sv:property sv:name="jcr:primaryType" sv:type="Name">
+                <sv:value>hipposys:workflowboundmethodevent</sv:value>
+            </sv:property>
+            <sv:property sv:name="hipposys:classname" sv:type="String">
+                <sv:value>nl.trifork.hippo.common.workflowevents.SearchIndexUpdatePublishedDocumentEvent</sv:value>
+            </sv:property>
+            <sv:property sv:name="hipposys:display" sv:type="String">
+                <sv:value>Workflow event for updating the search index with published documents</sv:value>
+            </sv:property>
+            <sv:property sv:name="hipposys:eventconditioncategory" sv:type="String">
+                <sv:value>default</sv:value>
+            </sv:property>
+            <sv:property sv:name="hipposys:eventconditionmethod" sv:type="String">
+                <sv:value>publish</sv:value>
+            </sv:property>
+            <sv:property sv:name="hipposys:nodetype" sv:type="String">
+                <sv:value>hippogogreen:document</sv:value>
+            </sv:property>
+            <sv:node sv:name="hipposys:types">
+                <sv:property sv:name="jcr:primaryType" sv:type="Name">
+                    <sv:value>hipposys:types</sv:value>
+                </sv:property>
+            </sv:node>
+        </sv:node>
+    </sv:node>
+
+</sv:node>

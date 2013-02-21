@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>nl.trifork.hippo.common</groupId>
+    <artifactId>hippo-wf-events</artifactId>
+    <version>0.1-SNAPSHOT</version>
+
+    <packaging>jar</packaging>
+
+    <name>Hippo Workflow Events</name>
+
+    <description>
+        This project contains workflow events for registering published as well as unpublished documents.
+    </description>
+
+    <url>https://github.com/triforkams/Hippo-Extensions</url>
+
+    <licenses>
+        <license>
+            <name>Apache 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git:git@github.com:triforkams/Hippo-Extensions.git</connection>
+        <url>scm:git:git@github.com:triforkams/Hippo-Extensions.git</url>
+        <developerConnection>scm:git:git@github.com:triforkams/Hippo-Extensions.git</developerConnection>
+    </scm>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>sonatype-nexus-snapshots</id>
+            <url>http://oss.sonatype.org/content/repositories/snapshots</url>
+            <uniqueVersion>true</uniqueVersion>
+        </snapshotRepository>
+        <repository>
+            <id>sonatype-nexus-staging</id>
+            <url>http://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+            <uniqueVersion>false</uniqueVersion>
+        </repository>
+    </distributionManagement>
+
+    <properties>
+        <hippo-repository.version>2.24.01</hippo-repository.version>
+        <hippo-cms.version>2.22.13</hippo-cms.version>
+        <jcr.version>2.0</jcr.version>
+        <jdo2.version>2.3-eb</jdo2.version>
+        <slf4j.version>1.6.4</slf4j.version>
+        <org.datanucleus.version>2.2.2</org.datanucleus.version>
+        <maven-datanucleus-plugin.version>2.2.1</maven-datanucleus-plugin.version>
+    </properties>
+
+    <repositories>
+        <repository>
+              <id>hippo</id>
+              <name>Hippo Maven 2</name>
+              <url>http://maven.onehippo.com/maven2/</url>
+              <snapshots>
+                <enabled>false</enabled>
+              </snapshots>
+              <releases>
+                <updatePolicy>never</updatePolicy>
+              </releases>
+            </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.onehippo.cms7</groupId>
+            <artifactId>hippo-repository-api</artifactId>
+            <version>${hippo-repository.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.onehippo.cms7</groupId>
+            <artifactId>hippo-repository-builtin</artifactId>
+            <version>${hippo-repository.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.onehippo.cms7</groupId>
+            <artifactId>hippo-cms-api</artifactId>
+            <version>${hippo-cms.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.jcr</groupId>
+            <artifactId>jcr</artifactId>
+            <version>${jcr.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.jdo</groupId>
+            <artifactId>jdo2-api</artifactId>
+            <version>${jdo2.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+
+        <!-- Test dependencies -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit-dep</artifactId>
+            <version>4.10</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>1.9.0</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <encoding>utf-8</encoding>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+                <version>2.3.2</version>
+            </plugin>
+            <plugin>
+                <groupId>org.datanucleus</groupId>
+                <artifactId>maven-datanucleus-plugin</artifactId>
+                <version>${maven-datanucleus-plugin.version}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.datanucleus</groupId>
+                        <artifactId>datanucleus-core</artifactId>
+                        <version>${org.datanucleus.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>javax.jcr</groupId>
+                        <artifactId>jcr</artifactId>
+                        <version>${jcr.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.onehippo.cms7</groupId>
+                        <artifactId>hippo-repository-api</artifactId>
+                        <version>${hippo-repository.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.onehippo.cms7</groupId>
+                        <artifactId>hippo-repository-utilities</artifactId>
+                        <version>${hippo-repository.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.onehippo.cms7</groupId>
+                        <artifactId>hippo-repository-builtin</artifactId>
+                        <version>${hippo-repository.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-api</artifactId>
+                        <version>${slf4j.version}</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <log4jConfiguration>log4j.properties</log4jConfiguration>
+                    <metadataIncludes>**/*.jdo, **/*.class</metadataIncludes>
+                    <verbose>true</verbose>
+                    <fork>false</fork>
+                    <enhancerName>ASM</enhancerName>
+                    <props>jdo.properties</props>
+                    <persistenceUnitName>roworkflowevents</persistenceUnitName>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>enhance</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.4.3</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.12</version>
+                <configuration>
+                    <includes>
+                        <include>**/*Test.java</include>
+                    </includes>
+                    <excludes>
+                        <exclude>**/*IntegrationTest.java</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.3.1</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.2.2</version>
+                <configuration>
+                    <mavenExecutorId>forked-path</mavenExecutorId>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.8.1</version>
+            </plugin>
+            <plugin>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.1.2</version>
+            </plugin>
+            <plugin>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.7</version>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>release-sign-artifacts</id>
+            <activation>
+                <property>
+                    <name>performRelease</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.4</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <!--suppress MavenModelInspection -->
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+    <developers>
+        <developer>
+            <name>Jettro Coenradie</name>
+            <email>jettro.coenradie@trifork.nl</email>
+            <organization>Trifork Amsterdam</organization>
+            <organizationUrl>www.trifork.nl</organizationUrl>
+            <roles>
+                <role>Project Owner</role>
+            </roles>
+        </developer>
+    </developers>
+</project>
